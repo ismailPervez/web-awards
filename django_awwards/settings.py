@@ -17,6 +17,7 @@ import cloudinary.uploader
 import cloudinary.api
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,6 +91,12 @@ WSGI_APPLICATION = 'django_awwards.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+       'default': dj_database_url.config(
+           default="postgres://ssqlnskwxingtx:70e39d39e00eec274e0513a709af5e25525fab795d22d0c8444a756e0830e29a@ec2-34-195-143-54.compute-1.amazonaws.com:5432/d8189jinmu9o5s"
+       )
+   }
 
 
 # Password validation
