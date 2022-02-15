@@ -1,0 +1,36 @@
+{% extends "users/base.html" %}
+{% load customfilters %}
+{% block content %}
+    <div id="wallpaper" class="d-flex flex-column align-items-center justify-content-center">
+        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="background wallpaper">
+        <div  class="d-flex flex-column align-items-center justify-content-center">
+            <h2 class="text-center">Explore Some Of The Coolest Websites</h2>
+            <div id="search-wrapper" class="d-flex align-items-center rounded px-2 py-1">
+                <input type="text" placeholder="search for projects...">
+                <i class="fas fa-search" role="button"></i>
+            </div>
+            <p class="fs-3 mt-4">Submit your sites for review <br> Review other people's sites</p>
+        </div>
+    </div>
+    <div class="mx-5 pb-4 mt-4">
+        <h2>best sites for today</h2>
+        <hr>
+        <div class="posts">
+            {% for post in posts %}
+            <div class="card">
+                <div class="card-img">
+                    <img src="{{ post.preview_image.url }}" alt="{{ post.title }}" class="rounded-top">
+                </div>
+                <div class="card-content py-2 px-3">
+                    <p class="font-weight-bold mb-2"><a href="{% url 'full-post' post_id=post.pk %}" class="card-title">{{ post.title }}</a></p>
+                    <a href="{{ post.link }}" target="_blank" class="d-block mb-2">{{ post.link }}</a>
+                    <div class="ratings mb-0">
+                        <p>{{ post.get_avg_ratings }}</p>
+                    </div>
+                    <p>posted by: {{ post.user.username }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

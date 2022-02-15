@@ -1,0 +1,29 @@
+{% extends "users/base.html" %}
+{% load customfilters %}
+{% block content %}
+    <div class="content mx-5">
+        <h1 class="fs-3">search results</h1>
+        <hr>
+        <div class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="{{ post.preview_image.url }}" alt="{{ post.title }}" class="rounded-top">
+                        </div>
+                        <div class="card-content py-2 px-3">
+                            <p class="font-weight-bold mb-2"><a href="{% url 'full-post' post_id=post.pk %}" class="card-title">{{ post.title }}</a></p>
+                            <a href="{{ post.link }}" target="_blank" class="d-block mb-2">{{ post.link }}</a>
+                            <div class="ratings mb-0">
+                                <p>{{ post.get_avg_ratings }}</p>
+                            </div>
+                            <p>posted by: {{ post.user.username }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <h4 class="fs-3 text-center text-muted">No posts found :(</h4>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
