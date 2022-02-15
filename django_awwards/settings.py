@@ -154,3 +154,5 @@ cloudinary.config(
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+ALLOWED_HOSTS = ['django-awwards.herokuapp.com']
