@@ -4,6 +4,11 @@ from .forms import CreateReviewForm, RegisterForm, CreateNewPost
 from django.contrib.auth.decorators import login_required
 from .models import Post, Rating, Review
 from django.contrib import messages
+from django.contrib.auth.models import User
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import UserSerializer, PostsSerializer
 
 def home(request):
     ratings = Rating.objects.order_by('-value').all()
@@ -99,3 +104,11 @@ def results(request, query):
         if (query in post.title) or (query in post.desc) or (query in post.user.username):
             filtered_posts.append(post)
     return render(request, 'users/results.html', {'posts': filtered_posts})
+
+
+# API views
+@api_view(['GET'])
+def get_users(request):
+    users = User.objects.all()
+    json_users = UserSerializer(users, many=True)
+    return Response(json_users.data)

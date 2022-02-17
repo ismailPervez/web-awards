@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'crispy_forms',
     'cloudinary',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -162,4 +163,5 @@ cloudinary.config(
   api_secret = "vN4QHhAXJ05EFDqm2OhZO8VIJVE" 
 )
 
-ALLOWED_HOSTS = ['django-awwards.herokuapp.com']
+# ALLOWED_HOSTS = ['django-awwards.herokuapp.com', 'localhost:8000']
+ALLOWED_HOSTS = []
