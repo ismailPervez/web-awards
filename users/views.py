@@ -112,3 +112,9 @@ def get_users(request):
     users = User.objects.all()
     json_users = UserSerializer(users, many=True)
     return Response(json_users.data)
+
+@api_view(['GET'])
+def get_user(request, username):
+    user = get_object_or_404(User, username=username)
+    json_user = UserSerializer(user)
+    return Response(json_user.data)

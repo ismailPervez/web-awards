@@ -13,5 +13,6 @@ urlpatterns = [
     path('fullpost/<post_id>', views.full_post, name='full-post'),
     path('rate/<post_id>/', views.add_ratings),
     path('posts/filtered/<query>/', views.results, name='results'),
-    path('get/users/', views.get_users)
+    path('get/users/', views.get_users),
+    path('get/user/<username>', views.get_user)
 ]
