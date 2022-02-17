@@ -118,3 +118,9 @@ def get_user(request, username):
     user = get_object_or_404(User, username=username)
     json_user = UserSerializer(user)
     return Response(json_user.data)
+
+@api_view(['GET'])
+def get_posts(request):
+    posts = Post.objects.all()
+    json_posts = PostsSerializer(posts, many=True)
+    return Response(json_posts.data)

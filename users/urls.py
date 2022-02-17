@@ -14,5 +14,6 @@ urlpatterns = [
     path('rate/<post_id>/', views.add_ratings),
     path('posts/filtered/<query>/', views.results, name='results'),
     path('get/users/', views.get_users),
-    path('get/user/<username>', views.get_user)
+    path('get/user/<username>', views.get_user),
+    path('get/posts/', views.get_posts)
 ]
